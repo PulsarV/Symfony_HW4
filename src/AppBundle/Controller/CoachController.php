@@ -2,7 +2,6 @@
 
 namespace AppBundle\Controller;
 
-use Doctrine\Common\Collections\Criteria;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -18,9 +17,7 @@ class CoachController extends Controller
     public function viewAction($teamName, $coachName)
     {
         $em = $this->getDoctrine()->getManager();
-        $coachs = $em->getRepository('AppBundle:Team')->findOneBy(['name' => $teamName])->getCoachs();
-        $criteria = Criteria::create()->where(Criteria::expr()->eq("name", $coachName));
-        $coach = $coachs->matching($criteria)[0];
+        $coach = $em->getRepository('AppBundle:Coach')->findCoachByTeam($teamName, $coachName);
         return ['coach' => $coach];
     }
 
@@ -32,7 +29,7 @@ class CoachController extends Controller
     public function indexAction($teamName)
     {
         $em = $this->getDoctrine()->getManager();
-        $coachs = $em->getRepository('AppBundle:Team')->findOneBy(['name' => $teamName])->getCoachs()->getValues();
+        $coachs = $em->getRepository('AppBundle:Coach')->findAllCoachsByTeam($teamName);
         return ['coachs' => $coachs];
     }
 }
