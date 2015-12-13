@@ -1,0 +1,13 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - {{ coachs[0].team.name }} national football team coachs
+{% endblock %}
+{% block header %}
+    {{ coachs[0].team.name }} national football team coachs
+{% endblock %}
+{% block content %}
+    {% for coach in coachs %}
+        <a class="btn btn-default col-lg-3" href="{{ path('coachView', { 'teamName': coach.team.name, 'coachName': coach.name }) }}" role="button">{{ coach.name }}</a>
+    {% endfor %}
+{% endblock %}
