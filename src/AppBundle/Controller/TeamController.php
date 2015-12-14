@@ -18,7 +18,7 @@ class TeamController extends Controller
     public function viewAction($teamName)
     {
         $em = $this->getDoctrine()->getManager();
-        $team = $em->getRepository('AppBundle:Team')->findOneBy(['name' => $teamName]);
+        $team = $em->getRepository('AppBundle:Team')->findTeamByName($teamName);
         return ['team' => $team];
     }
 }

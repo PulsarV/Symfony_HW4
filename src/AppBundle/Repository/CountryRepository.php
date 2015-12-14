@@ -10,4 +10,15 @@ namespace AppBundle\Repository;
  */
 class CountryRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findCountryByName($country)
+    {
+        $dql = "SELECT c FROM AppBundle:Country c WHERE c.name = :country";
+        return $this->getEntityManager()->createQuery($dql)->setParameter('country', $country)->getOneOrNullResult();
+    }
+
+    public function findAllCountries()
+    {
+        $dql = "SELECT c FROM AppBundle:Country c ORDER BY c.name ASC";
+        return $this->getEntityManager()->createQuery($dql)->getResult();
+    }
 }

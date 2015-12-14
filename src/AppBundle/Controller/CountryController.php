@@ -17,7 +17,7 @@ class CountryController extends Controller
     public function viewAction($countryName)
     {
         $em = $this->getDoctrine()->getManager();
-        $country = $em->getRepository('AppBundle:Country')->findOneBy(['name' => $countryName]);
+        $country = $em->getRepository('AppBundle:Country')->findCountryByName($countryName);
         return ['country' => $country];
     }
 
@@ -29,7 +29,7 @@ class CountryController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $countries = $em->getRepository('AppBundle:Country')->findAll();
+        $countries = $em->getRepository('AppBundle:Country')->findAllCountries();
         return ['countries' => $countries];
     }
 }

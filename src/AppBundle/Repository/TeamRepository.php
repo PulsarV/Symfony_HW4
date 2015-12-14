@@ -10,4 +10,9 @@ namespace AppBundle\Repository;
  */
 class TeamRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findTeamByName($team)
+    {
+        $dql = "SELECT t FROM AppBundle:Team t WHERE t.name = :team";
+        return $this->getEntityManager()->createQuery($dql)->setParameter('team', $team)->getOneOrNullResult();
+    }
 }
