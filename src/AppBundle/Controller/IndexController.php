@@ -17,8 +17,7 @@ class IndexController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $countries = $em->getRepository('AppBundle:Country')->findAll();
-
+        $countries = $em->getRepository('AppBundle:Country')->findAllCountries();
         return ['countries' => $countries];
     }
 }
