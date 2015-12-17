@@ -45,7 +45,7 @@ class Country
     /**
      * @ORM\OneToOne(targetEntity="Team", mappedBy="country")
      */
-    protected $country;
+    protected $team;
 
     /**
      * Get id
@@ -127,5 +127,29 @@ class Country
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Set team
+     *
+     * @param Team $team
+     *
+     * @return Country
+     */
+    public function setTeam(Team $team = null)
+    {
+        $this->team = $team;
+
+        return $this;
+    }
+
+    /**
+     * Get team
+     *
+     * @return Team
+     */
+    public function getTeam()
+    {
+        return $this->team;
     }
 }

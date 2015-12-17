@@ -38,7 +38,7 @@ class Team
     protected $description;
 
     /**
-     * @ORM\OneToOne(targetEntity="Country", inversedBy="country")
+     * @ORM\OneToOne(targetEntity="Country", inversedBy="team")
      */
     protected $country;
 
