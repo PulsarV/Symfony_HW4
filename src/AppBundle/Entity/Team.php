@@ -50,12 +50,12 @@ class Team
     /**
      * @ORM\OneToMany(targetEntity="Coach", mappedBy="team")
      */
-    protected $coachs;
+    protected $coaches;
 
     public function __construct()
     {
         $this->players = new ArrayCollection();
-        $this->coachs = new ArrayCollection();
+        $this->coaches = new ArrayCollection();
     }
 
     /**
@@ -183,7 +183,7 @@ class Team
      */
     public function addCoach(Coach $coach)
     {
-        $this->coachs[] = $coach;
+        $this->coaches[] = $coach;
 
         return $this;
     }
@@ -195,16 +195,16 @@ class Team
      */
     public function removeCoach(Coach $coach)
     {
-        $this->coachs->removeElement($coach);
+        $this->coaches->removeElement($coach);
     }
 
     /**
-     * Get coachs
+     * Get coaches
      *
      * @return Collection
      */
-    public function getCoachs()
+    public function getCoaches()
     {
-        return $this->coachs;
+        return $this->coaches;
     }
 }

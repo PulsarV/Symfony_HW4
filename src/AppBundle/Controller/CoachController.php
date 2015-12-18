@@ -29,7 +29,7 @@ class CoachController extends Controller
     public function indexAction($teamName)
     {
         $em = $this->getDoctrine()->getManager();
-        $coachs = $em->getRepository('AppBundle:Coach')->findAllCoachsByTeam($teamName);
-        return ['coachs' => $coachs];
+        $coaches = $em->getRepository('AppBundle:Coach')->findAllCoachesByTeam($teamName);
+        return ['coaches' => $coaches];
     }
 }

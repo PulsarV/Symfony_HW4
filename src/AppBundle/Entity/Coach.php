@@ -36,7 +36,7 @@ class Coach
     protected $description;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Team", inversedBy="coachs")
+     * @ORM\ManyToOne(targetEntity="Team", inversedBy="coaches")
      */
     protected $team;
 

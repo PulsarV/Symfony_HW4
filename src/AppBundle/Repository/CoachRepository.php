@@ -16,7 +16,7 @@ class CoachRepository extends \Doctrine\ORM\EntityRepository
         return $this->getEntityManager()->createQuery($dql)->setParameter('coach', $coach)->setParameter('team', $team)->getOneOrNullResult();
     }
 
-    public function findAllCoachsByTeam($team)
+    public function findAllCoachesByTeam($team)
     {
         $dql = "SELECT c, t FROM AppBundle:Coach c JOIN c.team t WHERE t.name = :team ORDER BY c.name ASC";
         return $this->getEntityManager()->createQuery($dql)->setParameter('team', $team)->getResult();
